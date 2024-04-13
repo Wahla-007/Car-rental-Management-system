@@ -1,0 +1,771 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+
+using namespace std;
+
+struct customer {//for customer structure   .....in the code choose and choosee is used as structure 
+	string name;  //while other typos are just variables.
+	string id;
+	string phone;
+	string bill;
+	string car;
+	string rday;
+	string tday;
+};
+int lexus = 0, honda = 0, bmw = 0, hyundai = 0, suzuki = 0, kawasaki = 0, atlantis = 0, koenigzegg = 0;
+struct cars { //cars structure
+	string brands[100] = { "Lexus","Honda","BMW","Hyundai","Suzuki","Kawasaki","Atlantis","Koenigzegg" };
+	string models[100] = { "200","2000","2002","2005","2007","2020","2023","2021" };
+	double price[100] = { 1000,2000,3000,4000,5000,6000,7000,8000 };
+	int available[100] = { 0 };
+	char maintanence[100] = {};
+};
+
+	void saveDataToFile(const cars & inventory) { //to savedata in the file  car data.
+		ofstream outputFile("car_inventory.txt");
+		cout << "car_inventry";
+		if (outputFile.is_open()) {
+			for (int i = 0; i < 10; ++i) {
+				outputFile << inventory.brands[i] << " " << inventory.models[i] << " " << inventory.price[i] << " " << inventory.available[i] << "\n";
+			}
+
+			outputFile.close();
+			cout << "Data saved to file successfully.\n";
+		}
+		else {
+			cout << "Unable to open file.\n";
+		}
+	}
+	void customerrent(customer  choose) { //all the customer rental business is done here the rental report is available when the user rents a car
+		cars* chose = new cars[100];       //when user rents a car then the price si asked and for conformation a option is askd to say yes awhen he/she 
+		cars choosee;                        //agrees they can see the rental report by  replying with (y). 
+		char des, des2;                     //go to the end  of this function ........LINE  >>>396
+		cout << "\n\n\t\t\tYou can choose from the following cars\n";
+		for (int i = 0; i < 9; i++)
+		{
+			cout << "\t\t\t\t" << i + 1 << "." << choosee.brands[i] << endl;
+		}
+
+		int select;
+		cin >> select;
+		if (select == 1) {
+
+			cout << "You Have selected Lexux(200) priced at 1000 per day do you want to buy it.  "   << "\n" << endl;
+			
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			int dom = 1;
+			if (des == 'y') {
+
+				cout << choosee.available[0] << endl;
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 1000;
+				cout << "Your bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << " )Car:(" << " Lexux 200" << ") ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Lexus 200\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		
+		if (select == 2) {
+			cout << "You Have selected Honda(2000) priced at 2000 per day do you want to buy it. "  << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 2000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")car:(Honda 2000) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Honda 2000\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 3) {
+			cout << "You Have selected BMW(2001) priced at 3000 per day do you want to buy it." << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 3000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")Car:(BMW 2001) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: BMW 2001\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 4) {
+			cout << "You Have selected Hyundai(2005) priced at 4000 per day do you want to buy it." << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 4000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")car:(Hyundai(2005)) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Hyundai 2005\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 5) {
+			cout << "You Have selected Suzuki(2010) priced at 5000 per day do you want to buy it."  << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 5000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")Car:(Suzuki(2010)) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Suzuki 2010\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 6) {
+			cout << "You Have selected Kawasaki(2020) priced at 6000 per day do you want to buy it."  << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 6000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")Car:(Kawasaki(2020) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Kawasaki 2020\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 7) {
+			cout << "You Have selected Atlantis(200) priced at 7000 per day do you want to buy it."  << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 7000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")Car: (Atlantis(200) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "\nDo you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Atlantis 200\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+		}
+		if (select == 8) {
+			cout << "You Have selected Keinigzeg(2023) priced at 8000 per day do you want to buy it." << endl;
+			cout << "press y to continue and n for exit.    ";
+			cin >> des, des2;
+			if (des == 'y') {
+				
+				cout << "Enter your name: ";
+				cin >> choose.name;
+				cout << "Enter ID:  ";
+				cin >> choose.id;
+				cout << "Enter the number of days you want to buy it:  ";
+				int days;
+				cin >> days;
+				string today, rday;
+				cout << "Enter date:\n"; cin >> today;
+				cout << "Enter  return date date:\n"; cin >> rday;
+				int bill = days * 8000;
+				cout << "Tour bill is: " << bill << "rupees";
+				ofstream output("customerrecord.txt", ios::app);
+				output << "NAME:(" << choose.name << ")Car:(Keinigzeg(2023) ID:( " << choose.id << ") BILL:(" << bill << ") DATE: (" << today << "/" << rday << ")" << endl;
+				output.close();
+				cout << "Do you want  to make a Report for you.Press y to make one:  \n";
+				cin >> des2;
+				if (des2 == 'y') {
+					system("cls");
+					cout << "\n\n\n\t\t\t\t\t Customer Report\n";
+					cout << "\t\t\t Nmae: " << choose.name << endl;
+					cout << "\t\t\tId: " << choose.id << endl;
+					cout << "\t\t\tCar: Koeibizegg jesko iSpur 200\n";
+					cout << "\t\t\tBIll: Rs." << bill << endl;
+					cout << "\t\t\tDate:" << today << "/" << rday << endl;
+				}
+				else {
+					cout << "\t\tThanks For Comming\n";
+				}
+
+
+			}
+			else {
+				cout << "\t\tThanks For Comming\n";
+			}
+			ofstream output("carinventory.txt", ios::app);
+			for (int i = 0; i < 8; i++) {
+				output << "\t\t\t\t" << i + 1 << "." << choosee.brands[i] << " " << choosee.models[i] << " Price: $" << choosee.price[i] << "Availability" << choosee.available << endl;
+			}
+		}delete[] chose;
+		
+	};
+	void addCar(cars& inventory) {// to add car******************************
+		int numCarsToAdd;
+		cout << "Enter the number of cars to add: ";
+		cin >> numCarsToAdd;
+
+		for (int i = 0; i < numCarsToAdd; ++i) {
+			cout << "Enter details for car " << i + 1 << ":\n";
+			cout << "Brand: ";
+			cin >> inventory.brands[i + 8];
+			cout << "Model: ";
+			cin >> inventory.models[i + 8];
+			cout << "Price: ";
+			cin >> inventory.price[i + 8];
+			cout << "Availability: ";
+			cin >> inventory.available[i + 8];
+			cout << "Mainranence: ";
+			cin >> inventory.maintanence[i + 8];
+		}
+		fstream outputFile("car_inventory.txt", ios::out);
+
+		if (outputFile.is_open()) {
+			for (int i = 0; i < 11; ++i) {
+				outputFile <<"Brand ("<< inventory.brands[i] <<")" << "Model:( " << inventory.models[i] << ")Price: (" << inventory.price[i] << ")Available:( " << inventory.available[i] << ")Maintanence:(" << inventory.maintanence << ")\n";
+
+				cout << " \nin the file\n ";
+			}
+
+			outputFile.close();
+			cout << "Data saved to file successfully.\n";
+		}
+		else {
+			cout << "Unable to open file.\n";
+		}
+		cout << numCarsToAdd << " car(s) added successfully.\n";
+		cout << "\nUpdated Car List:\n";
+		for (int i = 0; i < 8 + numCarsToAdd; ++i) {
+			cout << "\t\t\t\t" << i + 1 << "." << inventory.brands[i] << " " << inventory.models[i] << " Price: $" << inventory.price[i] << " Availability: " << inventory.available[i] << endl;
+		}
+	}
+	void removeCar(cars & inventory) { //to remove the car............***********************
+		int carIndex;
+		cout << "\n\t\t\tWE have cars given below......\n";
+		ifstream infile("car_inventory.txt");
+
+		for (int i = 0; i < 8; ++i) {
+			cout << "\t\t\t\t" << i + 1 << "." << inventory.brands[i] << " . " << inventory.models[i] << " Price: $ " << inventory.price[i] << " Availability: " << inventory.available[i] << endl;
+		}
+		infile.close();
+		cout << "Enter the index of the car to remove: ";
+		cin >> carIndex;
+
+		if (carIndex >= 1 && carIndex <= 12) {
+			
+			cout << "Removing the car: " << inventory.brands[carIndex - 1] << " " << inventory.models[carIndex - 1] << endl;
+
+			
+			for (int i = carIndex - 1; i <11; ++i) {
+				inventory.brands[i] = inventory.brands[i + 1];
+				inventory.models[i] = inventory.models[i + 1];
+				inventory.price[i] = inventory.price[i + 1];
+				inventory.available[i] = inventory.available[i + 1];
+			}
+			saveDataToFile(inventory);
+			cout << "Car removed successfully.\n";
+
+			cout << "\nUpdated Car List:\n";
+			for (int i = 0; i < 10; ++i) {
+				cout << "\t\t\t\t" << i + 1 << "." << inventory.brands[i] << " " << inventory.models[i] << " Price: $" << inventory.price[i] << " Availability: " << inventory.available[i] << endl;
+			}
+		}
+		else {
+			cout << "Invalid index. Please enter a valid index to remove a car.\n";
+		}
+	}
+	
+	void Returncar() {//to remove car************************************************************************
+		cars choosee;
+		cout << "\n\t\t\t You want to return  which car\n";
+		for (int i = 0; i < 9; i++)
+		{
+			cout << "\t\t\t\t" << i + 1 << "." << choosee.brands[i] << endl;
+		}
+
+		int rselect;
+		cin >> rselect;
+		if (rselect == 1) {
+			choosee.available[0] = 1;
+			cout << "\t\t\tYou have retrned Lexus(200) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 2) {
+			choosee.available[1] = 1;
+			cout << "\t\t\t You have retrned Honda(2000) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 3) {
+			choosee.available[2] = 1;
+			cout << "\t\t\t You have retrned BMW(2002) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 4) {
+			choosee.available[3] = 1;
+			cout << "\t\t\t You have retrned Hyundai(2005) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 5) {
+			choosee.available[4] = 1;
+			cout << "\t\t\t You have retrned Suzuki(2007) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 6) {
+			choosee.available[5] = 1;
+			cout << "\t\t\t You have retrned Kawasaki(2020) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 7) {
+			choosee.available[6] = 1;
+			cout << "\t\t\t You have retrned Atlantis(2023) Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else if (rselect == 8) {
+			choosee.available[7] = 1;
+			cout << "\t\t\t You have retrned Koenigzegg(2021)Thanks for comming.Nice Dealing woth you.\n";
+
+		}
+		else {
+			cout << "\t\t\tinvalid response.\n";
+		}
+
+
+
+	};
+	void removeCustomer(const string& customerId) {
+		ifstream inputFile("customerrecord.txt");
+		ofstream tempFile("tempfile.txt");
+		string line, idInFile;
+		while (inputFile >> idInFile) {
+			if (idInFile == customerId) {
+				
+				getline(inputFile, line); 
+			}
+			else {
+				
+				tempFile << idInFile;
+				getline(inputFile, line);  
+				tempFile << line << '\n';
+			}
+		}
+
+		inputFile.close();
+		tempFile.close();
+		remove("customerrecord.txt");
+		rename("tempfile.txt", "customerrecord.txt");
+
+	
+	}
+
+	
+	void addCustomerToFile(const customer& choose) {
+		ofstream outputFile("customerrecord.txt", ios::app);
+		outputFile << "\n\t\tName: (" << choose.name << ")";
+		outputFile << "\t\tcar: (" << choose.car << ")";
+		outputFile << "\t\tID:( " <<choose.id << ")";
+		outputFile << "\t\tBill:( " << choose.bill << ")";
+		outputFile << "\t\tDate: (" << choose.tday << "/"<<choose.rday<<endl;
+
+		outputFile.close();
+		ifstream inputFile("customerrecord.txt");
+		string customfile ;
+		cout << "2Updated customer data from file:\n";
+		while (getline(inputFile, customfile)) {
+			cout << customfile << endl;
+		}
+		inputFile.close();
+
+	};
+	void displayCarInventory(const cars & inventory) {
+		ifstream inputtFile("car_inventory.txt");
+		string inventfile;
+		cout << "\n\n\n\t\t\t   Updated customer data from file:\n";
+		while (getline(inputtFile, inventfile)) {
+			cout << inventfile << endl;
+		}
+		inputtFile.close();
+	}
+	void adminlogin() {//*******************************************admin login signup
+		customer pier;
+		cars choosee;
+		int count = 0, login = 0;
+		string username, password, userID, userPASS;
+		cout << "\n\n\n\nqq\t\t\t\t|    USERNAME:     ";
+		cin >> username;
+		cout << "\n\t\t\t\t|    PASSWORD:    ";
+		cin >> password;
+		ifstream input("SignInRecordsadmin.txt");
+		while (input >> userID >> userPASS) {
+			if (userID == username && userPASS == password) {
+				count = 1;
+			}
+		}
+		input.close();
+		if (count == 1) {
+			cout << " Login Successful.   \n";
+			cout << "-----------------------------------------------------------------------------------\n";
+			system("cls");
+			cout << "choose the following\n";
+			cout << "\t\t1.ADD a car\n";
+			cout << "\t\t2.Remove a car\n";
+			cout << "\t\t3.Add a customer\n";
+			cout << "\t\t4.Remove a customer\n";
+			cout << "\t\t5. Report        ||     ";
+			int selecto;
+			cin >> selecto;
+			if (selecto == 1) {
+				addCar(choosee);
+			}
+			else if (selecto == 2) {
+				removeCar(choosee);
+
+			}
+			else if (selecto == 3) {
+
+				customer choose;
+				customer* cust = new customer[50];
+
+				cout << " ..Enter customer details:\n";
+				cout << "Name:  ";
+				cin >> choose.name;
+				cout << "Car: ";
+				cin >> choose.car;
+				cout << "ID: ";
+				cin >> choose.id;
+				cout << "Bill: ";
+				cin >> choose.bill;
+				cout << "Renting date: ";
+				cin >> choose.tday;
+				cout << "Returning Date: ";
+				cin >> choose.rday;
+				addCustomerToFile(choose);
+				cout << "\t\t\t customer data entered successfully.\n";
+				delete[] cust;
+			}
+			
+			else if (selecto == 4) {
+				string customerId;
+				cout << "Enter the ID of the customer to remove: ";
+				cin >> customerId;
+
+				removeCustomer(customerId);
+
+				cout << "Customer removed successfully!\n";
+
+			}
+			else if (selecto == 5) {
+				displayCarInventory(choosee);
+			}
+			else { cout << "choose valid input"; }
+		}
+
+		else {
+			cout << "  Incorrect PASSWORD or USERNAME.    \n";
+		}
+		if (login == 1) {
+			cout << "cc";
+		}
+	}
+
+	void customerlogin() { // the customer functions are accessible by this function
+		int count = 0, login =0;
+		string username, password, userID, userPASS;
+		cout << "\n\n\n\nqq\t\t\t\t|    USERNAME:     ";
+		cin >> username;
+		cout << "\n\t\t\t\t|    PASSWORD:    ";
+		cin >> password;
+		ifstream input("SignInRecordscustomer.txt");
+		while (input >> userID >> userPASS) {
+			if (userID == username && userPASS == password) {
+				count = 1;
+			}
+		}
+		input.close();
+		if (count == 1) {
+			system("cls");
+			cout << " Login Successful.   \n";
+			cout << "-----------------------------------------------------------------------------------\n";
+			customer choose;
+			cout << "choose the following\n";
+			cout << "\t\t1.Rent Car";
+			cout << "\t\t2.Return car";
+			cout << " Report option is available when you rent a car.";
+			int selector;
+			cin >> selector;
+			if (selector == 1) {
+				customerrent(choose);
+			}
+			else if (selector == 2) {
+				Returncar();
+			}
+			else { cout << "choose valid input"; }
+		}
+		else {
+			cout << "  Incorrect PASSWORD or USERNAME.    \n";
+		}
+		if (login == 1) {
+
+		}
+	}
+
+	void adminsignup() {   //the admin functions are accesible by this function'
+		string Ruser, Rpass, RuserID, RuserPASS;
+		cout << "|    Username:     ";
+		cin >> Ruser;
+		cout << "|    Password:     ";
+		cin >> Rpass;
+		ofstream output("SignInRecordsadmin.txt", ios::app);
+		output << Ruser << " " << Rpass << endl;
+		output.close();
+		cout << "\n\tRegistration successful\n.";
+	}
+
+	void customersignup() {
+		string Ruser, Rpass, RuserID, RuserPASS;
+		cout << "|    Username:     ";
+		cin >> Ruser;
+		cout << "|    Password:     ";
+		cin >> Rpass;
+		ofstream output("SignInRecordscustomer.txt", ios::app);
+		output << Ruser << " " << Rpass << endl;
+		output.close();
+		cout << "\n\tRegistration successful\n.";
+	}
+
+	int main() {
+		ofstream outFile("customerrecord.txt", ios::app);
+
+		cout << "\t\t\t------------------------------------------------------------------------\n";
+		cout << "\t\t\t                                MENU                                    \n";
+		cout << "\t\t\t------------------------------------------------------------------------\n";
+		cout << "\t\t\t             Select the following:  \n ";
+		cout << "|\t\t\t  1. Admin\n";
+		cout << "|\t\t\t  2. Customer   |  ";
+		int selec = 0;
+		cin >> selec;
+		if (selec == 1) {
+			cout << "\n\n\t\t\tChoose one of the following:\n";
+			cout << "\n\n\t\t\t1. Sign in\n";
+			cout << "\n\n\t\t\t2. Sign up   |  ";
+			int c;
+			cin >> c;
+			if (c == 1) {
+				adminlogin();
+			}
+			else if (c == 2) {
+				adminsignup();
+			}
+			else {
+				cout << "Choose the right option.";
+			}
+		}
+		else {
+			cout << "\n\n\t\t\tChoose one of the following:\n";
+			cout << "\n\n\t\t\t1. Sign in\n";
+			cout << "\n\n\t\t\t2. Sign up   |  ";
+			int c;
+			cin >> c;
+			if (c == 1) {
+				customerlogin();
+			}
+			else if (c == 2) {
+				customersignup();
+			}
+			else {
+				cout << "Choose the right option.";
+			}
+		}
+		
+		outFile.close();
+		return 0;
+	}
